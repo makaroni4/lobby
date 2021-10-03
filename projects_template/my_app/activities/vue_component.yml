@@ -1,0 +1,36 @@
+---
+:name: "Create Vue component"
+:type: "create_file"
+:filename: "{{ name:dashed }}"
+:extension: "vue"
+:target_folder: "app/javascript/components"
+:fields:
+- name
+- folder
+:template: |
+  <template>
+    <div class="{{ name:dashed }}">
+    </div>
+  </template>
+
+  <script>
+  export default {
+    name: "{{ name:camelcased }}",
+    components: {
+    },
+    props: {
+    }
+  }
+  </script>
+
+  <style lang="scss">
+  @import "design_system/_colors";
+  @import "design_system/_spacing";
+  @import "design_system/_grid";
+  @import "design_system/_typography";
+  @import "design_system/_animations";
+
+  .{{ name:dashed }} {
+
+  }
+  </style>
