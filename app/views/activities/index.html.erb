@@ -1,0 +1,44 @@
+<h2>Projects</h2>
+
+<% @projects.each_with_index do |(project_name, project_params), project_index| %>
+  <h3><%= project_name %></h3>
+
+  <ul>
+    <% project_params[:activities].each do |activity_params| %>
+      <li>
+        <%= link_to activity_params[:name], new_activity_path(project_name: project_name, activity_name: activity_params[:name]) %>
+      </li>
+    <% end %>
+  </ul>
+<% end %>
+
+<h2>Activity Log</h2>
+
+<table>
+  <thead>
+    <tr>
+      <th>Activity Name</th>
+      <th>Activity Params</th>
+      <th>Activity Actions</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <tr>
+      <% @activities.each do |activity| %>
+        <% project = @projects.values.find { |p| p[:config][:name] == activity.project_name } %>
+        <td>
+          <%= activity[:activity_config][:name] %>
+        </td>
+        <td>
+          <%= activity[:params] %>
+        </td>
+        <td>
+          <%= link_to "vscode://file/#{project[:config][:path]}" do %>
+            Open in VS Code
+          <% end %>
+        </td>
+      <% end %>
+    </tr>
+  </tbody>
+</table>
