@@ -17,28 +17,28 @@
 <table>
   <thead>
     <tr>
-      <th>Activity Name</th>
-      <th>Activity Params</th>
-      <th>Activity Actions</th>
+      <th>Name</th>
+      <th>Params</th>
+      <th>Actions</th>
     </tr>
   </thead>
 
   <tbody>
-    <tr>
-      <% @activities.each do |activity| %>
+    <% @activities.each do |activity| %>
+      <tr>
         <% project = @projects.values.find { |p| p[:config][:name] == activity.project_name } %>
         <td>
-          <%= activity[:activity_config][:name] %>
+          <%= activity[:activity_config]["name"] %>
         </td>
         <td>
-          <%= activity[:params] %>
+          Name: <%= activity[:params]["name"] %>
         </td>
         <td>
-          <%= link_to "vscode://file/#{project[:config][:path]}" do %>
+          <%= link_to "#", class: "js-open-file", data: { project_path: project[:config][:path], file_path: activity[:params]["file_path"] } do %>
             Open in VS Code
           <% end %>
         </td>
-      <% end %>
-    </tr>
+      </tr>
+    <% end %>
   </tbody>
 </table>
