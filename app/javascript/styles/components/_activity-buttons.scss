@@ -1,4 +1,19 @@
 .activity-buttons {
-  &__button {
+  &__group {
+    padding: $px16;
+
+    border-radius: $px8;
+
+    background-color: $grey-10;
+
+    &:not(:last-child) {
+      margin-bottom: $px24;
+    }
+  }
+
+  &__activity-type {
+    margin-bottom: $px8;
+
+    @include font-label;
   }
 }

@@ -1,5 +1,14 @@
 <div class="activity-buttons">
-  <% project[:activities].each do |activity_params| %>
-    <%= link_to activity_params[:name], new_activity_path(project_name: project[:config][:name], activity_name: activity_params[:name]), class: "activity-buttons__button btn" %>
+  <% project[:activities].group_by { |a| a[:type]}.each do |type, activities| %>
+    <div class="activity-buttons__group">
+      <div class="activity-buttons__activity-type">
+        <%= t("activity_type.#{type}") %>
+      </div>
+      <div class="activity-buttons__buttons">
+        <% activities.each do |activity| %>
+          <%= link_to activity[:name], new_activity_path(project_name: project[:config][:name], activity_name: activity[:name]), class: "activity-buttons__button btn" %>
+        <% end %>
+      </div>
+    </div>
   <% end %>
 </div>

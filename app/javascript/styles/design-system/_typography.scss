@@ -47,9 +47,11 @@
 }
 
 @mixin font-label {
-  font-size: 15px;
+  font-size: 13px;
   line-height: 18px;
-  font-weight: 600;
+  font-weight: 700;
+  text-transform: uppercase;
+  color: $grey-6;
 }
 
 @mixin font-small {
