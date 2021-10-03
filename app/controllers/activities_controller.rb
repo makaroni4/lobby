@@ -1,13 +1,4 @@
 class ActivitiesController < ApplicationController
-  def index
-    @projects = load_projects
-    @activities = ActivityLog.all
-
-    if flash[:open_in_vscode].present?
-      @active_activity_log = ActivityLog.find(flash[:open_in_vscode])
-    end
-  end
-
   def new
     projects = load_projects
 
