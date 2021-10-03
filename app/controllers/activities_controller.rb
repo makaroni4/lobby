@@ -96,5 +96,13 @@ class ActivitiesController < ApplicationController
     OSASCRIPT
 
     system "osascript -e '#{terminal_command}'"
+
+    ActivityLog.create!({
+      project_name: @project[:config][:name],
+      activity_name: @activity[:name],
+      params: {
+      },
+      activity_config: @activity
+    })
   end
 end
