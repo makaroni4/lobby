@@ -1,4 +1,0 @@
----
-:name: "Deploy"
-:type: "shell_command"
-:command: "de"
