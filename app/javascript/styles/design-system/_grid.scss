@@ -1,0 +1,21 @@
+@import "breakpoint";
+
+@mixin container {
+  width: 100%;
+  margin: 0 auto;
+  padding: 0 $px16;
+
+  @include breakpoint($sm) {
+    max-width: 960px;
+  }
+}
+
+@mixin container1200 {
+  width: 100%;
+  margin: 0 auto;
+  padding: 0 $px16;
+
+  @include breakpoint($sm) {
+    max-width: 1200px;
+  }
+}

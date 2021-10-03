@@ -17,13 +17,9 @@ document.addEventListener("click", e => {
 
 const $autoOpenBlock = document.querySelector(".js-auto-open-file");
 
-console.log($autoOpenBlock);
-
 if($autoOpenBlock) {
   const projectPath = $autoOpenBlock.dataset.projectPath;
   const filePath = $autoOpenBlock.dataset.filePath;
-
-  console.log(projectPath, filePath);
 
   openFileInVSCode(projectPath, filePath);
 }

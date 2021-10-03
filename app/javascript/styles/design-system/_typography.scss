@@ -1,0 +1,133 @@
+@import url('https://fonts.googleapis.com/css?family=Muli:400,400i,500,600,700,800&display=swap');
+
+@mixin h1 {
+  font-size: 44px;
+  line-height: 56px;
+  font-weight: 800;
+}
+
+@mixin h2 {
+  font-size: 32px;
+  line-height: 36px;
+  font-weight: 800;
+}
+
+@mixin h3 {
+  font-size: 24px;
+  line-height: 28px;
+  font-weight: 800;
+}
+
+@mixin h4 {
+  font-size: 18px;
+  line-height: 24px;
+  font-weight: 800;
+}
+
+@mixin font-large {
+  font-size: 24px;
+  line-height: 36px;
+  font-weight: 500;
+}
+
+@mixin font-regular {
+  font-size: 17px;
+  line-height: 1.5;
+  font-weight: 400;
+}
+
+@mixin font-caption {
+  font-size: 18px;
+  line-height: 24px;
+}
+
+@mixin emphasis {
+  font-size: 20px;
+  line-height: 28px;
+}
+
+@mixin font-label {
+  font-size: 15px;
+  line-height: 18px;
+  font-weight: 600;
+}
+
+@mixin font-small {
+  font-size: 14px;
+  line-height: 18px;
+  font-weight: 400;
+}
+
+@mixin font-micro {
+  font-size: 10px;
+  line-height: 10px;
+  font-weight: 600;
+  text-transform: uppercase;
+}
+
+@mixin font-legal {
+  font-size: 10px;
+  line-height: 1.4;
+  font-weight: 500;
+  color: $grey-6;
+}
+
+@mixin font-link {
+  font-size: $px16;
+  line-height: 1;
+  font-weight: 600;
+  color: $grey-3;
+}
+
+@mixin font-btn {
+  font-size: 14px;
+  line-height: 1;
+  font-weight: 600;
+  letter-spacing: 0.65px;
+  color: $white;
+}
+
+body {
+  font-family: "Muli", sans-serif;
+  font-display: swap;
+  @include font-regular;
+  color: $grey-1;
+}
+
+h1 {
+  @include h1;
+}
+
+h2 {
+  @include h2;
+}
+
+h3 {
+  @include h3;
+}
+
+h4 {
+  @include h4;
+}
+
+a {
+  color: $grey-1;
+
+  &:hover {
+    opacity: 0.6;
+  }
+}
+
+pre, code {
+  font-family: Hack, monospace;
+}
+
+blockquote {
+  margin-left: 0;
+  padding-left: $px32;
+
+  border-left: $px8 solid $blue-8;
+
+  @include h2;
+  font-style: italic;
+}
