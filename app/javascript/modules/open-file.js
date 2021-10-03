@@ -1,5 +1,6 @@
 const openFileInVSCode = (projectPath, filePath) => {
   window.location = `vscode://file${projectPath}`;
+
   setTimeout(() => {
     window.location = `vscode://file${filePath}`;
   }, 1000);

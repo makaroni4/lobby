@@ -1,7 +1,7 @@
 ---
 :name: "Create Vue component"
 :type: "create_file"
-:filename: "name:dashed"
+:filename: "{{ name:dashed }}"
 :extension: "vue"
 :target_folder: "app/javascript/components"
 :fields:
@@ -9,13 +9,13 @@
 - folder
 :template: |
   <template>
-    <div class="%%name:dashed%%">
+    <div class="{{ name:dashed }}">
     </div>
   </template>
 
   <script>
   export default {
-    name: "name:camelcased",
+    name: "{{ name:camelcased }}",
     components: {
     },
     props: {
@@ -30,7 +30,7 @@
   @import "design_system/_typography";
   @import "design_system/_animations";
 
-  .%%name:dashed%% {
+  .{{ name:dashed }} {
 
   }
   </style>

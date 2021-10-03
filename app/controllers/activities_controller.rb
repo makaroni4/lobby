@@ -20,15 +20,27 @@ class ActivitiesController < ApplicationController
     @name = params[:name]
     @folder = params[:folder].to_s
 
+    camel_case_name = @name.include?(" ") ? @name.split(" ").map(&:camelize).join("") : @name
+    snake_case_name = camel_case_name.underscore
+    dash_name = snake_case_name.dasherize
+
+    template = @activity[:template]
+      .gsub("{{ name:dashed }}", dash_name)
+      .gsub("{{ name:camelcased }}", camel_case_name)
+
+    file_name = @activity[:filename]
+      .gsub("{{ name:dashed }}", dash_name)
+      .gsub("{{ name:camelcased }}", camel_case_name)
+
     new_file_path = File.join(
       @project[:config][:path],
       @activity[:target_folder],
       @folder,
-      "#{@name}.#{@activity[:extension]}"
+      "#{file_name}.#{@activity[:extension]}"
     )
 
     File.open(new_file_path, "w") do |file|
-      file.puts @activity[:template]
+      file.puts template
     end
 
     ActivityLog.create!({
