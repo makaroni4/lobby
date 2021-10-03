@@ -1,0 +1,12 @@
+.activity-buttons {
+  &__button {
+    display: inline-block;
+    padding: $px16;
+
+    border-radius: $px4;
+
+    background-color: $grey-10;
+
+    text-decoration: none;
+  }
+}

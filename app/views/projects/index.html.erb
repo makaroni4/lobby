@@ -1,5 +1,5 @@
 <h2>Projects</h2>
 
 <% @projects.each_with_index do |(project_name, project_params), project_index| %>
-  <%= link_to project_name, project_path(id: project_name) %>
+  <%= link_to project_name, project_path(id: project_params[:config][:slug]) %>
 <% end %>

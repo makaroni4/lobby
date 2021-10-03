@@ -13,6 +13,13 @@ class ActivitiesController < ApplicationController
 
     @project = projects.values.find { |project| project[:config][:name] == params[:project_name] }
     @activity = @project[:activities].find { |activity| activity[:name] == params[:activity_name] }
+
+    if @activity[:type] == "shell_command"
+      process_shell_command_activity
+
+      redirect_to activities_path, notice: "Created"
+      return
+    end
   end
 
   def create
@@ -21,6 +28,18 @@ class ActivitiesController < ApplicationController
     @project = projects.values.find { |project| project[:config][:name] == params[:project_name] }
     @activity = @project[:activities].find { |activity| activity[:name] == params[:activity_name] }
 
+    if @activity[:type] == "create_file"
+      process_create_file_activity
+    elsif @activity[:type] == "shell_command"
+      process_shell_command_activity
+    end
+
+    redirect_to activities_path, notice: "Created"
+  end
+
+  private
+
+  def process_create_file_activity
     @name = params[:name]
     @folder = params[:folder].to_s
 
@@ -61,7 +80,21 @@ class ActivitiesController < ApplicationController
     if params[:open_vscode] == "true"
       flash[:open_in_vscode] = activity_log.id
     end
+  end
 
-    redirect_to activities_path, notice: "Created"
+  def process_shell_command_activity
+    terminal_command = <<-OSASCRIPT
+      tell application "Terminal"
+        if not (exists window 1) then reopen
+        activate
+
+        -- new tab
+        tell application "System Events" to keystroke "t" using command down
+
+        do script "cd #{@project[:config][:path]} && #{@activity[:command]}" in window 1
+      end tell
+    OSASCRIPT
+
+    system "osascript -e '#{terminal_command}'"
   end
 end
