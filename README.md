@@ -11,5 +11,5 @@ Lobby is a vanilla Rails app that runs locally on your computer.
 1. Clone lobby's repo to your computer.
 2. Create `projects` folder by duplicating `projects_template`.
 3. Run `bundle install` to set up the project.
-4. Run `bundle exec rails s -p 3000` to run lobby locally on port 3000.
-5. Open `http://localhost:3000` in your browser.
+4. Run `bundle exec rails s -p 3077` to run lobby locally on port 3077.
+5. Open `http://localhost:3077` in your browser.
