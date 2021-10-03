@@ -2,6 +2,10 @@ class ActivitiesController < ApplicationController
   def index
     @projects = load_projects
     @activities = ActivityLog.all
+
+    if flash[:open_in_vscode].present?
+      @active_activity_log = ActivityLog.find(flash[:open_in_vscode])
+    end
   end
 
   def new
@@ -43,7 +47,7 @@ class ActivitiesController < ApplicationController
       file.puts template
     end
 
-    ActivityLog.create!({
+    activity_log = ActivityLog.create!({
       project_name: @project[:config][:name],
       activity_name: @activity[:name],
       params: {
@@ -53,6 +57,10 @@ class ActivitiesController < ApplicationController
       },
       activity_config: @activity
     })
+
+    if params[:open_vscode] == "true"
+      flash[:open_in_vscode] = activity_log.id
+    end
 
     redirect_to activities_path, notice: "Created"
   end

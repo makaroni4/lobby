@@ -10,5 +10,12 @@
     </div>
   <% end %>
 
+  <div>
+    <label for="open_vscode">
+      Open in VS Code
+      <%= check_box_tag :open_vscode, true, true %>
+    </label>
+  </div>
+
   <%= submit_tag "Create" %>
 <% end %>

@@ -1,3 +1,13 @@
+<% if @active_activity_log.present? %>
+  <% project = @projects.values.find { |p| p[:config][:name] == @active_activity_log.project_name } %>
+
+  <div
+    class="js-auto-open-file"
+    data-project-path="<%= project[:config][:path] %>"
+    data-file-path="<%= @active_activity_log[:params]["file_path"] %>">
+  </div>
+<% end %>
+
 <h2>Projects</h2>
 
 <% @projects.each_with_index do |(project_name, project_params), project_index| %>
