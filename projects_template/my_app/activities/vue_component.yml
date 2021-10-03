@@ -19,17 +19,16 @@
     components: {
     },
     props: {
+    },
+    data() {
+      return {
+
+      }
     }
   }
   </script>
 
   <style lang="scss">
-  @import "design_system/_colors";
-  @import "design_system/_spacing";
-  @import "design_system/_grid";
-  @import "design_system/_typography";
-  @import "design_system/_animations";
-
   .{{ name:dashed }} {
 
   }

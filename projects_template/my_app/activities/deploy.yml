@@ -1,4 +1,4 @@
 ---
 :name: "Deploy"
 :type: "shell_command"
-:command: "de"
+:command: "say 'I am deploying' && deploy"
