@@ -1,0 +1,7 @@
+.form {
+  &__row {
+    &:not(:last-child) {
+      margin-bottom: $px16;
+    }
+  }
+}

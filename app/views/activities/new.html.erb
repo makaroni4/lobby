@@ -1,21 +1,10 @@
-<h1><%= @activity[:name] %></h1>
+<div class="new-activity-page">
+  <div class="new-activity-page__container container">
+    <h1><%= @activity[:name] %></h1>
 
-<%= form_tag activities_path, method: :post do %>
-  <% @activity[:fields].each do |field_name| %>
-    <%= hidden_field_tag :project_name, @project[:config][:name] %>
-    <%= hidden_field_tag :activity_name, @activity[:name] %>
-
-    <div>
-      <%= text_field_tag field_name, nil, placeholder: field_name %>
+    <div class="new-activity-page__form">
+      <%= render "form", activity: @activity,
+                         project: @project %>
     </div>
-  <% end %>
-
-  <div>
-    <label for="open_vscode">
-      Open in VS Code
-      <%= check_box_tag :open_vscode, true, true %>
-    </label>
   </div>
-
-  <%= submit_tag "Create" %>
-<% end %>
+</div>

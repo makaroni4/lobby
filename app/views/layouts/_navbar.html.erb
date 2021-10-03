@@ -1,0 +1,11 @@
+<nav class="navbar">
+  <div class="navbar__container container">
+    <%= link_to root_path do %>
+      <%= inline_svg "logo", class: "navbar__logo" %>
+    <% end %>
+
+    <div class="navbar__links">
+      <%= link_to "Projects", projects_path %>
+    </div>
+  </div>
+</nav>

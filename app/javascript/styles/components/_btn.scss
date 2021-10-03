@@ -1,0 +1,48 @@
+.btn {
+  $root: &;
+
+  display: inline-block;
+  padding: 15px $px12;
+
+  border-radius: $px4;
+  outline: none;
+  border: $px1 solid transparent;
+
+  background-color: $blue-5;
+
+  @include font-btn;
+  text-decoration: none;
+  text-align: center;
+  text-transform: uppercase;
+
+  cursor: pointer;
+  transition: all 0.3s;
+
+  &:hover {
+    background-color: $blue-6;
+    opacity: 1;
+  }
+
+  &--xs {
+    padding: $px4 $px8;
+
+    border-radius: $px4;
+
+    @include font-small;
+    line-height: 1;
+  }
+
+  &--sm {
+    padding: $px8;
+
+    border-radius: $px4;
+  }
+
+  &--lg {
+    padding: $px16;
+
+    border-radius: $px4;
+
+    font-size: $px16;
+  }
+}

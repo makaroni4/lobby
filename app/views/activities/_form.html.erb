@@ -1,0 +1,21 @@
+<%= form_tag activities_path, method: :post, class: "form" do %>
+  <%= hidden_field_tag :project_name, @project[:config][:name] %>
+  <%= hidden_field_tag :activity_name, activity[:name] %>
+
+  <% activity[:fields].each do |field_name| %>
+    <div class="form__row">
+      <%= text_field_tag field_name, nil, placeholder: field_name, class: "input" %>
+    </div>
+  <% end %>
+
+  <div class="form__row">
+    <label for="open_vscode">
+      Open in VS Code
+      <%= check_box_tag :open_vscode, true, true %>
+    </label>
+  </div>
+
+  <div class="form__row">
+    <%= submit_tag "Submit", class: "btn" %>
+  </div>
+<% end %>

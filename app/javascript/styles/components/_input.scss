@@ -1,0 +1,17 @@
+.input {
+  width: 100%;
+  padding: $px8;
+
+  border: $px2 solid $grey-7;
+  border-radius: $px4;
+  outline: none;
+
+  @include font-regular;
+
+  appearance: none;
+
+  &::placeholder {
+    @include font-regular;
+    color: $grey-7;
+  }
+}

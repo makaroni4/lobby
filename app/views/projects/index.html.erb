@@ -1,5 +1,11 @@
-<h2>Projects</h2>
+<div class="projects-page">
+  <div class="projects-page__container container">
+    <h2>Projects</h2>
 
-<% @projects.each_with_index do |(project_name, project_params), project_index| %>
-  <%= link_to project_name, project_path(id: project_params[:config][:slug]) %>
-<% end %>
+    <div class="projects-page__projects">
+      <% @projects.each_with_index do |(project_name, project_params), project_index| %>
+        <%= link_to project_name, project_path(id: project_params[:config][:slug]) %>
+      <% end %>
+    </div>
+  </div>
+</div>
