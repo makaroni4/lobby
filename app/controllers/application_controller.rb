@@ -1,4 +1,6 @@
 class ApplicationController < ActionController::Base
+  helper_method :load_projects
+
   private
 
   def project_folders

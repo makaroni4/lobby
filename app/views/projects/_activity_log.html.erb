@@ -11,22 +11,7 @@
 
     <tbody>
       <% activities.each do |activity| %>
-        <tr>
-          <td>
-            <%= activity[:activity_config]["name"] %>
-          </td>
-          <td>
-            Name: <%= activity[:params]["name"] %>
-          </td>
-          <td>
-            <%= link_to "#", class: "js-open-file", data: { project_path: project[:config][:path], file_path: activity[:params]["file_path"] } do %>
-              Open in VS Code
-            <% end %>
-          </td>
-          <td>
-            <%= activity.created_at.to_s(:short) %>
-          </td>
-        </tr>
+        <%= render "projects/activity_log/#{activity[:activity_config]['type']}", activity: activity %>
       <% end %>
     </tbody>
   </table>
