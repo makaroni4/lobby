@@ -1,0 +1,13 @@
+<% projects.each_with_index do |(project_name, project_params), project_index| %>
+  <div class="project">
+    <h3 class="project__headline">
+      <%= project_name %>
+    </h3>
+  </div>
+
+  <div class="project__activities">
+    <% project_params[:activities].each do |activity_params| %>
+      <%= link_to activity_params[:name], new_activity_path(project_name: project_name, activity_name: activity_params[:name]), class: "project__activity" %>
+    <% end %>
+  </div>
+<% end %>
