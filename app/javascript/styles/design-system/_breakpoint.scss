@@ -14,19 +14,3 @@ $md-only: ( min: map-get($md, min), max: map-get($lg, min) - 1 );
 
   @media screen and #{$query} { @content; }
 }
-
-.hidden-xs {
-  display: none;
-
-  @include breakpoint($sm) {
-    display: block;
-  }
-}
-
-.visible-xs {
-  display: block;
-
-  @include breakpoint($sm) {
-    display: none;
-  }
-}

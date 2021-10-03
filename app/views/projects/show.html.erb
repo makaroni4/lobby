@@ -1,51 +1,19 @@
-<% if @active_activity_log.present? %>
-  <% project = @projects.values.find { |p| p[:config][:name] == @active_activity_log.project_name } %>
+<%= render "active_activity", activity_log: @active_activity_log,
+                              project: @project %>
 
-  <div
-    class="js-auto-open-file"
-    data-project-path="<%= project[:config][:path] %>"
-    data-file-path="<%= @active_activity_log[:params]["file_path"] %>">
+<div class="project-page">
+  <div class="project-page__container container">
+    <h1><%= @project[:config][:name] %></h1>
+
+    <div class="project-page__activities">
+      <%= render "activities", project: @project %>
+    </div>
+
+    <div class="project-page__activity-log">
+      <h2>Activity Log</h2>
+
+      <%= render "activity_log", activities: @activities,
+                                 project: @project %>
+    </div>
   </div>
-<% end %>
-
-<h1>Project: <%= @project[:config][:name] %></h1>
-
-<h2>Activities</h2>
-
-<div class="activity-buttons">
-  <% @project[:activities].each do |activity_params| %>
-    <%= link_to activity_params[:name], new_activity_path(project_name: @project[:config][:name], activity_name: activity_params[:name]), class: "activity-buttons__button" %>
-  <% end %>
 </div>
-
-<% if @activities.any? %>
-  <h2>Activity Log</h2>
-
-  <table>
-    <thead>
-      <tr>
-        <th>Name</th>
-        <th>Params</th>
-        <th>Actions</th>
-      </tr>
-    </thead>
-
-    <tbody>
-      <% @activities.each do |activity| %>
-        <tr>
-          <td>
-            <%= activity[:activity_config]["name"] %>
-          </td>
-          <td>
-            Name: <%= activity[:params]["name"] %>
-          </td>
-          <td>
-            <%= link_to "#", class: "js-open-file", data: { project_path: @project[:config][:path], file_path: activity[:params]["file_path"] } do %>
-              Open in VS Code
-            <% end %>
-          </td>
-        </tr>
-      <% end %>
-    </tbody>
-  </table>
-<% end %>

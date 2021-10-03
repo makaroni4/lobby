@@ -1,0 +1,33 @@
+<% if activities.any? %>
+  <table class="activity-log">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Params</th>
+        <th>Actions</th>
+        <th>Timestamp</th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <% activities.each do |activity| %>
+        <tr>
+          <td>
+            <%= activity[:activity_config]["name"] %>
+          </td>
+          <td>
+            Name: <%= activity[:params]["name"] %>
+          </td>
+          <td>
+            <%= link_to "#", class: "js-open-file", data: { project_path: project[:config][:path], file_path: activity[:params]["file_path"] } do %>
+              Open in VS Code
+            <% end %>
+          </td>
+          <td>
+            <%= activity.created_at.to_s(:short) %>
+          </td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+<% end %>

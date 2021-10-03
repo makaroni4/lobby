@@ -1,0 +1,7 @@
+<% if activity_log.present? %>
+  <div
+    class="js-auto-open-file"
+    data-project-path="<%= project[:config][:path] %>"
+    data-file-path="<%= activity_log[:params]["file_path"] %>">
+  </div>
+<% end %>

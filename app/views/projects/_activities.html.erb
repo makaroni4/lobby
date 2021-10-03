@@ -1,0 +1,5 @@
+<div class="activity-buttons">
+  <% project[:activities].each do |activity_params| %>
+    <%= link_to activity_params[:name], new_activity_path(project_name: project[:config][:name], activity_name: activity_params[:name]), class: "activity-buttons__button" %>
+  <% end %>
+</div>

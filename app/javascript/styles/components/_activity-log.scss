@@ -1,0 +1,55 @@
+.activity-log {
+  width: 100%;
+
+  border-collapse: separate;
+  border-spacing: 0;
+
+  thead {
+    background-color: $grey-10;
+  }
+
+  tr {
+    &:nth-child(even) {
+      background-color: $grey-10;
+    }
+  }
+
+  tr th,
+  tr td {
+    padding: $px8;
+
+    border-right: $px1 solid $grey-9;
+    border-bottom: $px1 solid $grey-9;
+
+    text-align: left;
+  }
+
+  tr th:first-child,
+  tr td:first-child {
+    border-left: $px1 solid $grey-9;
+  }
+
+  tr th {
+    border-top: $px1 solid $grey-9;
+  }
+
+  /* top-left border-radius */
+  tr:first-child th:first-child {
+    border-top-left-radius: $px4;
+  }
+
+  /* top-right border-radius */
+  tr:first-child th:last-child {
+    border-top-right-radius: $px4;
+  }
+
+  /* bottom-left border-radius */
+  tr:last-child td:first-child {
+    border-bottom-left-radius: $px4;
+  }
+
+  /* bottom-right border-radius */
+  tr:last-child td:last-child {
+    border-bottom-right-radius: $px4;
+  }
+}
