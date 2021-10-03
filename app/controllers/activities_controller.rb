@@ -8,7 +8,7 @@ class ActivitiesController < ApplicationController
     if @activity[:type] == "shell_command"
       process_shell_command_activity
 
-      redirect_to activities_path, notice: "Created"
+      redirect_to project_path(id: @project[:config][:slug]), notice: "Shell command is running, check out your Terminal."
       return
     end
   end
@@ -21,11 +21,15 @@ class ActivitiesController < ApplicationController
 
     if @activity[:type] == "create_file"
       process_create_file_activity
+
+      flash[:notice] = "File was created."
     elsif @activity[:type] == "shell_command"
       process_shell_command_activity
+
+      flash[:notice] = "Shell command is running, check out your Terminal."
     end
 
-    redirect_to activities_path, notice: "Created"
+    redirect_to project_path(id: @project[:config][:slug])
   end
 
   private
