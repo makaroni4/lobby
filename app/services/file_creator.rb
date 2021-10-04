@@ -15,10 +15,12 @@ class FileCreator
       template = file_params[:template]
         .gsub("{{ name:dashed }}", dash_name)
         .gsub("{{ name:camelcased }}", camel_case_name)
+        .gsub("{{ name:underscored }}", snake_case_name)
 
       pathname = file_params[:path]
         .gsub("{{ name:dashed }}", dash_name)
         .gsub("{{ name:camelcased }}", camel_case_name)
+        .gsub("{{ name:underscored }}", snake_case_name)
 
       new_file_path = File.join(
         @project[:config][:path],
