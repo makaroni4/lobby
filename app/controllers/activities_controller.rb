@@ -38,8 +38,18 @@ class ActivitiesController < ApplicationController
     activity_log = FileCreator.new(@project, @activity, params[:name], params[:folder]).create
 
     if params[:open_vscode] == "true"
-      flash[:open_in_vscode] = activity_log.id
+      open_files_in_vscode(@project, activity_log)
     end
+  end
+
+  def open_files_in_vscode(project, activity_log)
+    files = activity_log.params["files"]
+
+    command = <<-BASH
+      code #{project[:config][:path]} #{files.join(" ")}
+    BASH
+
+    system command
   end
 
   def process_shell_command_activity
