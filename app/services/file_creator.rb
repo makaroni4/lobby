@@ -27,6 +27,8 @@ class FileCreator
         pathname
       )
 
+      FileUtils.mkdir_p(File.dirname(new_file_path))
+
       File.open(new_file_path, "w") do |file|
         file.puts(template)
       end
