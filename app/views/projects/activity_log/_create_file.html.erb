@@ -1,0 +1,16 @@
+<tr>
+  <td>
+    <%= activity[:activity_config]["name"] %>
+  </td>
+  <td>
+    Name: <%= activity[:params]["name"] %>
+  </td>
+  <td>
+    <%= link_to api_activity_log_open_in_vscode_path(activity_log_id: activity.id), remote: true do %>
+      Open in VS Code
+    <% end %>
+  </td>
+  <td>
+    <%= activity.created_at.to_s(:short) %>
+  </td>
+</tr>

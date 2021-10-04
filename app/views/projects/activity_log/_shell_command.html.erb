@@ -1,0 +1,14 @@
+<% project = load_projects.values.find { |p| p[:config][:name] == activity.project_name } %>
+
+<tr>
+  <td>
+    <%= activity[:activity_config]["name"] %>
+  </td>
+  <td>
+  </td>
+  <td>
+  </td>
+  <td>
+    <%= activity.created_at.to_s(:short) %>
+  </td>
+</tr>
